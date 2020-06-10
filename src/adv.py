@@ -109,7 +109,7 @@ while choice != 0:
 
     elif choice == 'w':
         chosen_direction = 'west'
-        if room[player.current_room].w_to:
+        if room[player.current_room].w_to != None:
             player.current_room = room[player.current_room].w_to.name
         else:
             print(no_room_msg)
