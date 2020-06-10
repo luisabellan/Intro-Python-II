@@ -1,4 +1,5 @@
-from room import Room
+from Room import Room
+from Player import Player
 
 # Declare all the rooms
 
@@ -52,29 +53,31 @@ room['treasure'].s_to = room['narrow']
 # If the user enters "q", quit the game.
 
 
-player =  Player()
+player = Player("Luis", "outside")
+# print(player)
 
-# REPL
 
 choice = -1
-print("Type 0 to quit")
 while choice != 0:
 
+    print(player)
+    print("Instructions:\n")
+    print("Press:\n - n for north\n - s for south\n - e for east\n - w for west\n - 0 to quit\n\n")
+    # REPL
+
     # Read
-    choice = input("Where do you want to go? (Press n for north, s for south, e for east or w for west): ")
+    choice = input(
+        "Where do you want to go?: ")
 
     # Evaluate
-    if choice == n:
+    if choice == 'n':
         chosen_direction = 'north'
-    elif choice == s:
+    elif choice == 's':
         chosen_direction = 'south'
-    elif choice == e:
+    elif choice == 'e':
         chosen_direction = 'east'
-    elif choice == w:
+    elif choice == 'w':
         chosen_direction = 'west'
-    else:
-        choice = input("Please try again: ")
-
 
     # Print
     print(chosen_direction)
