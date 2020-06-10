@@ -33,6 +33,30 @@ room['narrow'].w_to = room['foyer']
 room['narrow'].n_to = room['treasure']
 room['treasure'].s_to = room['narrow']
 
+# REPL
+choice = -1
+print("Type 0 to quit")
+while choice != 0:
+
+    # Read
+    choice = input("Where do you want to go? (Press n for north, s for south, e for east or w for west): ")
+
+    # Evaluate
+    if choice == n:
+        chosen_direction = 'north'
+    elif choice == s:
+        chosen_direction = 'south'
+    elif choice == e:
+        chosen_direction = 'east'
+    elif choice == w:
+        chosen_direction = 'west'
+    else:
+        choice = input("Please try again: ")
+
+
+    # Print
+    print(chosen_direction)
+
 #
 # Main
 #
