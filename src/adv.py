@@ -26,6 +26,7 @@ earlier adventurers. The only exit is to the south."""),
 # Link rooms together
 
 room['outside'].n_to = room['foyer']
+room['outside'].s_to = None
 room['foyer'].s_to = room['outside']
 room['foyer'].n_to = room['overlook']
 room['overlook'].s_to = room['foyer']
