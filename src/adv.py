@@ -28,8 +28,8 @@ earlier adventurers. The only exit is to the south."""),
 room['outside'].n_to = room['foyer']
 room['foyer'].s_to = room['outside']
 room['foyer'].n_to = room['overlook']
-room['foyer'].e_to = room['narrow']
 room['overlook'].s_to = room['foyer']
+room['foyer'].e_to = room['narrow']
 room['narrow'].w_to = room['foyer']
 room['narrow'].n_to = room['treasure']
 room['treasure'].s_to = room['narrow']
@@ -60,24 +60,63 @@ player = Player("Luis", "outside")
 choice = -1
 while choice != 0:
 
-    print(player)
+    print(f"{player.current_room}")
     print("Instructions:\n")
     print("Press:\n - n for north\n - s for south\n - e for east\n - w for west\n - 0 to quit\n\n")
+
     # REPL
 
     # Read
     choice = input(
         "Where do you want to go?: ")
 
+    no_room_msg = 'There is no room in that direction'
+
     # Evaluate
     if choice == 'n':
         chosen_direction = 'north'
+
+        if room[player.current_room].n_to != None:
+
+            # this method isn't working player.set_current_room(room[player.current_room].n_to.name)
+            # player.set_current_room(room[player.current_room].n_to.name)
+            player.current_room = room[player.current_room].n_to.name
+            #print(f"the room north of this one is {room[player.current_room].n_to.name}")
+
+        else:
+            chosen_direction = no_room_msg
+
+
     elif choice == 's':
         chosen_direction = 'south'
+
+        if room[player.current_room].s_to != None:
+            player.current_room = room[player.current_room].s_to.name
+        else:
+            chosen_direction = no_room_msg
+
+
+
     elif choice == 'e':
         chosen_direction = 'east'
+        if room[player.current_room].e_to != None:
+            player.current_room = room[player.current_room].e_to.name
+        else:
+            chosen_direction = no_room_msg
+
+
+
     elif choice == 'w':
         chosen_direction = 'west'
+        if room[player.current_room].w_to:
+            player.current_room = room[player.current_room].w_to.name
+        else:
+            print(no_room_msg)
+            chosen_direction = no_room_msg
+            
+    else:
+        continue
 
     # Print
-    print(chosen_direction)
+
+    print(f"{player.name} moved {chosen_direction}")

@@ -5,5 +5,10 @@ class Player:
         self.name = name
         self.current_room = current_room
 
-    def __str__(self):
-        return (f"Name: {self.name}\nCurrent room: {self.current_room}\n")
+   # def __str__(self):
+    #    return (f"Name: {self.name}\nCurrent room: {self.current_room}\n")
+
+    # this method isn't working
+    def set_current_room(self, room):
+
+        Player.current_room = room
