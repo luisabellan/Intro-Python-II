@@ -1,5 +1,6 @@
 from Room import Room
 from Player import Player
+from Item import Item
 
 # Declare all the rooms
 
@@ -48,6 +49,24 @@ treasure.n_to = None
 treasure.e_to = None
 treasure.w_to = None
 
+# Rooms items
+
+
+tomato = Item("tomato","A delicious red tomato")
+glass_of_water = Item("glass_of_water","A refreshing glass of water")
+knife = Item("knife","A sharp knife")
+napkin = Item("napkin","Just a normal napkin")
+muffin = Item("muffin","A chocolate muffin")
+toothbrush = Item("toothbrush","A used toothbrush")
+coins = Item("coins","A bunch of coins")
+key = Item("key","A rusty key")
+
+outside.items = []
+foyer.items = [glass_of_water.name, knife.name, tomato.name]
+overlook.items = [napkin.name, muffin.name]
+narrow.items = [toothbrush.name]
+treasure.items = [coins.name, key.name]
+
 
 #
 # Main
@@ -71,6 +90,7 @@ player = Player("Luis", outside)
 player.current_room.name = outside.name
 player.current_room.description = outside.description
 
+
 choice = -1
 while choice != 0:
 
@@ -78,6 +98,7 @@ while choice != 0:
     # print(player)
     print(f"player current room name is {player.current_room.name}")
     print(f"player current room description is {player.current_room.description}")
+    print(f" Items in this room: {player.current_room.items}")
 
     #print(f"the room north of this one is {player.current_room.n_to.name}")
     print("Instructions:\n")
@@ -91,42 +112,70 @@ while choice != 0:
 
     no_room_msg = 'There is no room in that direction'
 
-    # Evaluate
-    if choice == 'n'and player.current_room.n_to != None:
+    choices = choice.split(' ')
+    print(choices)
+    print(len(choices))
 
-            # this method isn't working player.set_current_room(player.current_room.n_to.name)
-            # player.set_current_room(player.current_room.n_to.name)
-            player = Player("Luis", player.current_room.n_to)
-            #player.current_room = player.current_room.n_to
-            continue
+    print(choice)
+    if len(choices) == 1:
 
+        # Evaluate
+        if choice == 'n'and player.current_room.n_to != None:
 
-
-    if choice == 's' and player.current_room.s_to != None:
-            player = Player("Luis", player.current_room.s_to)
-            #player.current_room = player.current_room.s_to
-            continue
-
-
+                # this method isn't working player.set_current_room(player.current_room.n_to.name)
+                # player.set_current_room(player.current_room.n_to.name)
+                player = Player("Luis", player.current_room.n_to)
+                #player.current_room = player.current_room.n_to
+                continue
 
 
 
-    if choice == 'e'and player.current_room.e_to != None:
-            player = Player("Luis", player.current_room.e_to)
-            #player.current_room = player.current_room.e_to
-            continue
+        if choice == 's' and player.current_room.s_to != None:
+                player = Player("Luis", player.current_room.s_to)
+                #player.current_room = player.current_room.s_to
+                continue
 
 
 
 
-    if choice == 'w'and player.current_room.w_to != None:
-            player = Player("Luis", player.current_room.w_to)
-            #player.current_room = player.current_room.w_to
-            continue
-    
 
-    if choice == '0':
-        break
+        if choice == 'e'and player.current_room.e_to != None:
+                player = Player("Luis", player.current_room.e_to)
+                #player.current_room = player.current_room.e_to
+                continue
+
+
+
+
+        if choice == 'w'and player.current_room.w_to != None:
+                player = Player("Luis", player.current_room.w_to)
+                #player.current_room = player.current_room.w_to
+                continue
+
+
+        if choice == '0':
+            break
+    if len(choices) == 2:
+        first_word = choices[0]
+        second_word = choices[1]
+        print("two word command input by player:")
+        print(f"first word: {first_word}")
+        print(f"second word: {second_word}")
+
+        if first_word == 'get' or first_word == 'take':
+            for item in player.current_room.items:
+                if item == second_word:
+                    player.add_item(item)
+                    item.on_take(item)
+                    player.current_room.remove_item(item)
+                else:
+                    print(f"there is no {second_word} in this room")
+
+
+
+
+
+
 
 
     # Print
