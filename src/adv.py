@@ -27,13 +27,24 @@ earlier adventurers. The only exit is to the south."""),
 
 room['outside'].n_to = room['foyer']
 room['outside'].s_to = None
+room['outside'].e_to = None
+room['outside'].w_to = None
 room['foyer'].s_to = room['outside']
 room['foyer'].n_to = room['overlook']
-room['overlook'].s_to = room['foyer']
 room['foyer'].e_to = room['narrow']
+room['foyer'].w_to = None
+room['overlook'].s_to = room['foyer']
+room['overlook'].n_to = None
+room['overlook'].e_to = None
+room['overlook'].w_to = None
 room['narrow'].w_to = room['foyer']
 room['narrow'].n_to = room['treasure']
+room['narrow'].s_to = None
+room['narrow'].e_to = None
 room['treasure'].s_to = room['narrow']
+room['treasure'].n_to = None
+room['treasure'].e_to = None
+room['treasure'].w_to = None
 
 
 #
@@ -114,7 +125,7 @@ while choice != 0:
         else:
             print(no_room_msg)
             chosen_direction = no_room_msg
-            
+
     else:
         continue
 
