@@ -3,48 +3,50 @@ from Player import Player
 
 # Declare all the rooms
 
-room = {
-    'outside':  Room("Outside Cave Entrance",
-                     "North of you, the cave mount beckons"),
 
-    'foyer':    Room("Foyer", """Dim light filters in from the south. Dusty
-passages run north and east."""),
+outside =  Room("Outside Cave Entrance",
+                 "North of you, the cave mount beckons")
 
-    'overlook': Room("Grand Overlook", """A steep cliff appears before you, falling
-into the darkness. Ahead to the north, a light flickers in
-the distance, but there is no way across the chasm."""),
+foyer = Room(
+"Foyer",
+"Dim light filters in from the south. Dusty passages run north and east.")
 
-    'narrow':   Room("Narrow Passage", """The narrow passage bends here from west
-to north. The smell of gold permeates the air."""),
+overlook = Room(
+"Grand Overlook",
+"A steep cliff appears before you, falling the darkness. Ahead to the north, a light flickers in distance, but there is no way across the chasm.")
 
-    'treasure': Room("Treasure Chamber", """You've found the long-lost treasure
-chamber! Sadly, it has already been completely emptied by
-earlier adventurers. The only exit is to the south."""),
-}
+narrow =   Room(
+"Narrow Passage",
+"The narrow passage bends here from west north. The smell of gold permeates the air.")
+
+treasure = Room(
+"Treasure Chamber",
+"You've found the long-lost treasure! Sadly, it has already been completely emptied by earlier adventurers. The only exit is to the south.")
+
 
 
 # Link rooms together
 
-room['outside'].n_to = room['foyer']
-room['outside'].s_to = None
-room['outside'].e_to = None
-room['outside'].w_to = None
-room['foyer'].s_to = room['outside']
-room['foyer'].n_to = room['overlook']
-room['foyer'].e_to = room['narrow']
-room['foyer'].w_to = None
-room['overlook'].s_to = room['foyer']
-room['overlook'].n_to = None
-room['overlook'].e_to = None
-room['overlook'].w_to = None
-room['narrow'].w_to = room['foyer']
-room['narrow'].n_to = room['treasure']
-room['narrow'].s_to = None
-room['narrow'].e_to = None
-room['treasure'].s_to = room['narrow']
-room['treasure'].n_to = None
-room['treasure'].e_to = None
-room['treasure'].w_to = None
+outside.n_to = foyer
+outside.s_to = None
+outside.e_to = None
+outside.w_to = None
+foyer.s_to = outside
+foyer.n_to = overlook
+foyer.e_to = narrow
+foyer.w_to = None
+overlook.s_to = foyer
+overlook.n_to = None
+overlook.e_to = None
+overlook.w_to = None
+narrow.w_to = foyer
+narrow.n_to = treasure
+narrow.s_to = None
+narrow.e_to = None
+treasure.s_to = narrow
+treasure.n_to = None
+treasure.e_to = None
+treasure.w_to = None
 
 
 #
@@ -65,14 +67,19 @@ room['treasure'].w_to = None
 # If the user enters "q", quit the game.
 
 
-player = Player("Luis", "outside")
-# print(player)
-
+player = Player("Luis", outside)
+player.current_room.name = outside.name
+player.current_room.description = outside.description
 
 choice = -1
 while choice != 0:
 
-    print(f"{player.current_room}")
+
+    # print(player)
+    print(f"player current room name is {player.current_room.name}")
+    print(f"player current room description is {player.current_room.description}")
+
+    #print(f"the room north of this one is {player.current_room.n_to.name}")
     print("Instructions:\n")
     print("Press:\n - n for north\n - s for south\n - e for east\n - w for west\n - 0 to quit\n\n")
 
@@ -85,50 +92,43 @@ while choice != 0:
     no_room_msg = 'There is no room in that direction'
 
     # Evaluate
-    if choice == 'n':
-        chosen_direction = 'north'
+    if choice == 'n'and player.current_room.n_to != None:
 
-        if room[player.current_room].n_to != None:
-
-            # this method isn't working player.set_current_room(room[player.current_room].n_to.name)
-            # player.set_current_room(room[player.current_room].n_to.name)
-            player.current_room = room[player.current_room].n_to.name
-            #print(f"the room north of this one is {room[player.current_room].n_to.name}")
-
-        else:
-            chosen_direction = no_room_msg
-
-
-    elif choice == 's':
-        chosen_direction = 'south'
-
-        if room[player.current_room].s_to != None:
-            player.current_room = room[player.current_room].s_to.name
-        else:
-            chosen_direction = no_room_msg
+            # this method isn't working player.set_current_room(player.current_room.n_to.name)
+            # player.set_current_room(player.current_room.n_to.name)
+            player = Player("Luis", player.current_room.n_to)
+            #player.current_room = player.current_room.n_to
+            continue
 
 
 
-    elif choice == 'e':
-        chosen_direction = 'east'
-        if room[player.current_room].e_to != None:
-            player.current_room = room[player.current_room].e_to.name
-        else:
-            chosen_direction = no_room_msg
+    if choice == 's' and player.current_room.s_to != None:
+            player = Player("Luis", player.current_room.s_to)
+            #player.current_room = player.current_room.s_to
+            continue
 
 
 
-    elif choice == 'w':
-        chosen_direction = 'west'
-        if room[player.current_room].w_to != None:
-            player.current_room = room[player.current_room].w_to.name
-        else:
-            print(no_room_msg)
-            chosen_direction = no_room_msg
 
-    else:
-        continue
+
+    if choice == 'e'and player.current_room.e_to != None:
+            player = Player("Luis", player.current_room.e_to)
+            #player.current_room = player.current_room.e_to
+            continue
+
+
+
+
+    if choice == 'w'and player.current_room.w_to != None:
+            player = Player("Luis", player.current_room.w_to)
+            #player.current_room = player.current_room.w_to
+            continue
+    
+
+    if choice == '0':
+        break
+
 
     # Print
 
-    print(f"{player.name} moved {chosen_direction}")
+    print(f"{player.name} chose {choice}")
