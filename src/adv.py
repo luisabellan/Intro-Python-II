@@ -127,6 +127,8 @@ while choice != 0:
                 player = Player("Luis", player.current_room.n_to)
                 #player.current_room = player.current_room.n_to
                 continue
+        else:
+            print("there is no room in that direction")
 
 
 
