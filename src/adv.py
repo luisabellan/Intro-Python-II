@@ -131,14 +131,10 @@ while choice != 0:
             print("there is no room in that direction")
 
 
-
         if choice == 's' and player.current_room.s_to != None:
                 player = Player("Luis", player.current_room.s_to)
                 #player.current_room = player.current_room.s_to
                 continue
-
-
-
 
 
         if choice == 'e'and player.current_room.e_to != None:
