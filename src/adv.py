@@ -115,10 +115,10 @@ while choice != 0:
     no_room_msg = 'There is no room in that direction'
 
     choices = choice.split(' ')
-    print(choices)
-    print(len(choices))
+    #print(choices)
+    #print(len(choices))
 
-    print(choice)
+    #print(choice)
     if len(choices) == 1:
 
         # Evaluate
