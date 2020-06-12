@@ -102,7 +102,7 @@ while choice != 0:
 
     #print(f"the room north of this one is {player.current_room.n_to.name}")
     print("Instructions:\n")
-    print("Press:\n - n for north\n - s for south\n - e for east\n - w for west\n - 0 to quit\n\n")
+    print("Press:\n - n for north\n - s for south\n - e for east\n - w for west\n - i for inventory\n - 0 to quit\n\n")
     print("Type:\n - take or get followed by the name of an item to pick up an item\n\n")
     print("Type:\n - drop followed by the name of an item to drop an item\n\n")
 
@@ -155,6 +155,14 @@ while choice != 0:
                 player = Player("Luis", player.current_room.w_to)
                 #player.current_room = player.current_room.w_to
                 continue
+
+        elif choice == 'w' and player.current_room.w_to == None:
+            print(no_room_msg)
+
+        if choice == 'i':
+                print(f"Inventory: {player.items}")
+                continue
+
         elif choice == 'w' and player.current_room.w_to == None:
             print(no_room_msg)
 
