@@ -104,6 +104,7 @@ while choice != 0:
     print("Instructions:\n")
     print("Press:\n - n for north\n - s for south\n - e for east\n - w for west\n - 0 to quit\n\n")
     print("Type:\n - take or get followed by the name of an item to pick up an item\n\n")
+    print("Type:\n - drop followed by the name of an item to drop an item\n\n")
 
     # REPL
 
@@ -173,6 +174,16 @@ while choice != 0:
                     player.add_item(item)
                     print(f"You have picked up {player.current_room.items[-1]}")
                     player.current_room.remove_item(item)
+                else:
+                    print(f"there is no {second_word} in this room")
+
+        elif first_word == 'drop':
+            for item in player.items:
+                if item == second_word:
+                    item_to_remove = item
+                    print(f"You have dropped {item_to_remove}")
+                    player.current_room.add_item(item)
+                    player.remove_item(item)
                 else:
                     print(f"there is no {second_word} in this room")
 

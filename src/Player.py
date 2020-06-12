@@ -16,6 +16,10 @@ class Player:
         self.item = item
         self.items.append(item)
 
+    def remove_item(self, item):
+        self.item = item
+        self.items.remove(item)
+
 
    # def __str__(self):
     #    return (f"Name: {self.name}\nCurrent room: {self.current_room}\n")
