@@ -24,7 +24,7 @@ treasure = Room(
 "Treasure Chamber",
 "You've found the long-lost treasure! Sadly, it has already been completely emptied by earlier adventurers. The only exit is to the south.")
 
-
+# monster names: gorgoroth
 
 # Link rooms together
 
