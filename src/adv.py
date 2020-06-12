@@ -172,9 +172,9 @@ while choice != 0:
     if len(choices) == 2:
         first_word = choices[0]
         second_word = choices[1]
-        print("two word command input by player:")
-        print(f"first word: {first_word}")
-        print(f"second word: {second_word}")
+        #print("two word command input by player:")
+        #print(f"first word: {first_word}")
+        #print(f"second word: {second_word}")
 
         if first_word == 'get' or first_word == 'take':
             for item in player.current_room.items:
