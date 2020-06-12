@@ -103,6 +103,7 @@ while choice != 0:
     #print(f"the room north of this one is {player.current_room.n_to.name}")
     print("Instructions:\n")
     print("Press:\n - n for north\n - s for south\n - e for east\n - w for west\n - 0 to quit\n\n")
+    print("Type:\n - take or get followed by the name of an item to pick up an item\n\n")
 
     # REPL
 
@@ -170,7 +171,7 @@ while choice != 0:
             for item in player.current_room.items:
                 if item == second_word:
                     player.add_item(item)
-                    item.on_take(item)
+                    #print(f"here: {player.current_room.items[-1]}")
                     player.current_room.remove_item(item)
                 else:
                     print(f"there is no {second_word} in this room")
