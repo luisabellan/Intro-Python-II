@@ -120,35 +120,41 @@ while choice != 0:
     if len(choices) == 1:
 
         # Evaluate
-        if choice == 'n'and player.current_room.n_to != None:
+        if choice == 'n' and player.current_room.n_to != None:
 
                 # this method isn't working player.set_current_room(player.current_room.n_to.name)
                 # player.set_current_room(player.current_room.n_to.name)
                 player = Player("Luis", player.current_room.n_to)
                 #player.current_room = player.current_room.n_to
                 continue
-        else:
-            print("there is no room in that direction")
+        elif choice == 'n' and player.current_room.n_to == None:
+            print(no_room_msg)
 
 
         if choice == 's' and player.current_room.s_to != None:
                 player = Player("Luis", player.current_room.s_to)
                 #player.current_room = player.current_room.s_to
                 continue
+        elif choice == 's' and player.current_room.s_to == None:
+            print(no_room_msg)
 
 
-        if choice == 'e'and player.current_room.e_to != None:
+        if choice == 'e' and player.current_room.e_to != None:
                 player = Player("Luis", player.current_room.e_to)
                 #player.current_room = player.current_room.e_to
                 continue
+        elif choice == 'e'and player.current_room.e_to == None:
+            print(no_room_msg)
 
 
 
 
-        if choice == 'w'and player.current_room.w_to != None:
+        if choice == 'w' and player.current_room.w_to != None:
                 player = Player("Luis", player.current_room.w_to)
                 #player.current_room = player.current_room.w_to
                 continue
+        elif choice == 'w' and player.current_room.w_to == None:
+            print(no_room_msg)
 
 
         if choice == '0':
