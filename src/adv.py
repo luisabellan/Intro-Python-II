@@ -171,7 +171,7 @@ while choice != 0:
             for item in player.current_room.items:
                 if item == second_word:
                     player.add_item(item)
-                    #print(f"here: {player.current_room.items[-1]}")
+                    print(f"You have picked up {player.current_room.items[-1]}")
                     player.current_room.remove_item(item)
                 else:
                     print(f"there is no {second_word} in this room")
