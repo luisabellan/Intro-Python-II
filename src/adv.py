@@ -24,6 +24,12 @@ treasure = Room(
 "Treasure Chamber",
 "You've found the long-lost treasure! Sadly, it has already been completely emptied by earlier adventurers. The only exit is to the south.")
 
+#more Rooms
+studio =   Room(
+"Studio",
+"The studio is very spacious and have interesting books.")
+
+
 # monster names: gorgoroth
 
 # Link rooms together
@@ -47,7 +53,12 @@ narrow.e_to = None
 treasure.s_to = narrow
 treasure.n_to = None
 treasure.e_to = None
-treasure.w_to = None
+treasure.w_to = studio
+studio.w_to = narrow
+studio.n_to = None
+studio.s_to = None
+studio.e_to = None
+
 
 # Rooms items
 
@@ -60,6 +71,12 @@ muffin = Item("muffin","A chocolate muffin")
 toothbrush = Item("toothbrush","A used toothbrush")
 coins = Item("coins","A bunch of coins")
 key = Item("key","A rusty key")
+
+#more items
+cookie = Item("cookie","A venomous cookie. Do not eat it!")
+hat = Item("hat","This mage hat is said to have protective effects against evil beings.")
+letter = Item("letter","A letter from afar in a forgotten language.")
+sword = Item("sword","A light and well-made steel sword")
 
 outside.items = []
 foyer.items = [glass_of_water.name, knife.name, tomato.name]
