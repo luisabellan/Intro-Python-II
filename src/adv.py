@@ -49,11 +49,11 @@ overlook.w_to = None
 narrow.w_to = foyer
 narrow.n_to = treasure
 narrow.s_to = None
-narrow.e_to = None
+narrow.e_to = studio
 treasure.s_to = narrow
 treasure.n_to = None
 treasure.e_to = None
-treasure.w_to = studio
+treasure.w_to = None
 studio.w_to = narrow
 studio.n_to = None
 studio.s_to = None
@@ -128,7 +128,7 @@ while choice != 0:
 
     # Read
     choice = input(
-        "Where do you want to go?: ")
+        "Enter direction or action to take: ")
 
     no_room_msg = 'There is no room in that direction'
 
@@ -142,7 +142,6 @@ while choice != 0:
         # Evaluate
         if choice == 'n' and player.current_room.n_to != None:
 
-                # this method isn't working player.set_current_room(player.current_room.n_to.name)
                 # player.set_current_room(player.current_room.n_to.name)
                 player = Player("Luis", player.current_room.n_to)
                 #player.current_room = player.current_room.n_to
