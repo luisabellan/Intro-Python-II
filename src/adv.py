@@ -73,16 +73,17 @@ coins = Item("coins","A bunch of coins")
 key = Item("key","A rusty key")
 
 #more items
-cookie = Item("cookie","A venomous cookie. Do not eat it!")
 hat = Item("hat","This mage hat is said to have protective effects against evil beings.")
 letter = Item("letter","A letter from afar in a forgotten language.")
 sword = Item("sword","A light and well-made steel sword")
+cookie = Item("cookie","A venomous cookie. Do not eat it!")
 
 outside.items = []
 foyer.items = [glass_of_water.name, knife.name, tomato.name]
 overlook.items = [napkin.name, muffin.name]
 narrow.items = [toothbrush.name]
 treasure.items = [coins.name, key.name]
+studio.items = [letter.name,sword.name,hat.name,cookie.name]
 
 
 #
