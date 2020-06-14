@@ -3,22 +3,21 @@
 
 
 class Player:
-    def __init__(self, name, current_room,*items):
+    def __init__(self, name, current_room,items=[]):
         self.name = name
         self.current_room = current_room
         self.current_room.name = current_room.name
         self.current_room.description = current_room.description
-        self.items = []
-        for item in items:
-            self.items.append(items)
+        self.items = items
+
 
     def add_item(self,item):
         self.item = item
-        self.items.append(item)
+        self.items.append(self.item)
 
     def remove_item(self, item):
         self.item = item
-        self.items.remove(item)
+        self.items.remove(self.item)
 
 
    # def __str__(self):
