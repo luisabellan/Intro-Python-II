@@ -24,7 +24,13 @@ treasure = Room(
 "Treasure Chamber",
 "You've found the long-lost treasure! Sadly, it has already been completely emptied by earlier adventurers. The only exit is to the south.")
 
+#more Rooms
+studio =   Room(
+"Studio",
+"The studio is very spacious and have interesting books.")
 
+
+# monster names: gorgoroth
 
 # Link rooms together
 
@@ -43,11 +49,16 @@ overlook.w_to = None
 narrow.w_to = foyer
 narrow.n_to = treasure
 narrow.s_to = None
-narrow.e_to = None
+narrow.e_to = studio
 treasure.s_to = narrow
 treasure.n_to = None
 treasure.e_to = None
 treasure.w_to = None
+studio.w_to = narrow
+studio.n_to = None
+studio.s_to = None
+studio.e_to = None
+
 
 # Rooms items
 
@@ -61,11 +72,18 @@ toothbrush = Item("toothbrush","A used toothbrush")
 coins = Item("coins","A bunch of coins")
 key = Item("key","A rusty key")
 
+#more items
+hat = Item("hat","This mage hat is said to have protective effects against evil beings.")
+letter = Item("letter","A letter from afar in a forgotten language.")
+sword = Item("sword","A light and well-made steel sword")
+cookie = Item("cookie","A venomous cookie. Do not eat it!")
+
 outside.items = []
 foyer.items = [glass_of_water.name, knife.name, tomato.name]
 overlook.items = [napkin.name, muffin.name]
 narrow.items = [toothbrush.name]
 treasure.items = [coins.name, key.name]
+studio.items = [letter.name,sword.name,hat.name,cookie.name]
 
 
 #
@@ -110,7 +128,7 @@ while choice != 0:
 
     # Read
     choice = input(
-        "Where do you want to go?: ")
+        "Enter direction or action to take: ")
 
     no_room_msg = 'There is no room in that direction'
 
@@ -124,7 +142,6 @@ while choice != 0:
         # Evaluate
         if choice == 'n' and player.current_room.n_to != None:
 
-                # this method isn't working player.set_current_room(player.current_room.n_to.name)
                 # player.set_current_room(player.current_room.n_to.name)
                 player = Player("Luis", player.current_room.n_to)
                 #player.current_room = player.current_room.n_to
