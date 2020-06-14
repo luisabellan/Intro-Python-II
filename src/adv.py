@@ -77,13 +77,15 @@ hat = Item("hat","This mage hat is said to have protective effects against evil 
 letter = Item("letter","A letter from afar in a forgotten language.")
 sword = Item("sword","A light and well-made steel sword")
 cookie = Item("cookie","A venomous cookie. Do not eat it!")
+LightSource = Item("LightSource", "LightSource is needed to see items in rooms without ilumination")
 
-outside.items = []
+outside.items = ['LightSource']
 foyer.items = [glass_of_water.name, knife.name, tomato.name]
 overlook.items = [napkin.name, muffin.name]
 narrow.items = [toothbrush.name]
 treasure.items = [coins.name, key.name]
 studio.items = [letter.name,sword.name,hat.name,cookie.name]
+
 
 
 #
@@ -113,16 +115,11 @@ choice = -1
 while choice != 0:
 
     if player.current_room.is_light == False:
-        for item in player.current_room.items:
+        for item in player.items:
             if item != 'LightSource':
                 # print(player)
                 print(f"It's pitch black!")
     else:
-
-
-
-
-
         # print(player)
         print(f"player's current room name: {player.current_room.name}")
         print(f"player's current room description: {player.current_room.description}")
@@ -203,6 +200,8 @@ while choice != 0:
         #print(f"first word: {first_word}")
         #print(f"second word: {second_word}")
 
+# TODO Modify the `get`/`take` code to print "Good luck finding that in the dark!" if
+#the user tries to pick up an `Item` in the dark.
         if first_word == 'get' or first_word == 'take':
             for item in player.current_room.items:
                 if item == second_word:
