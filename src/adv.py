@@ -18,7 +18,7 @@ overlook = Room(
 
 narrow =   Room(
 "Narrow Passage",
-"The narrow passage bends here from west north. The smell of gold permeates the air.", True)
+"The narrow passage bends here from west north. The smell of gold permeates the air.", False)
 
 treasure = Room(
 "Treasure Chamber",
@@ -112,11 +112,21 @@ player.current_room.description = outside.description
 choice = -1
 while choice != 0:
 
+    if player.current_room.is_light == False:
+        for item in player.current_room.items:
+            if item != 'LightSource':
+                # print(player)
+                print(f"It's pitch black!")
+    else:
 
-    # print(player)
-    print(f"player's current room name: {player.current_room.name}")
-    print(f"player's current room description: {player.current_room.description}")
-    print(f" Items in this room: {player.current_room.items}")
+
+
+
+
+        # print(player)
+        print(f"player's current room name: {player.current_room.name}")
+        print(f"player's current room description: {player.current_room.description}")
+        print(f" Items in this room: {player.current_room.items}")
 
     #print(f"the room north of this one is {player.current_room.n_to.name}")
     print("Instructions:\n")
