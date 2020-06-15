@@ -5,29 +5,29 @@ from Item import Item
 # Declare all the rooms
 
 
-outside =  Room("Outside Cave Entrance",
-                 "North of you, the cave mount beckons", True)
+outside = Room("Outside Cave Entrance",
+               "North of you, the cave mount beckons", True)
 
 foyer = Room(
-"Foyer",
-"Dim light filters in from the south. Dusty passages run north and east.", True)
+    "Foyer",
+    "Dim light filters in from the south. Dusty passages run north and east.", True)
 
 overlook = Room(
-"Grand Overlook",
-"A steep cliff appears before you, falling the darkness. Ahead to the north, a light flickers in distance, but there is no way across the chasm.", True)
+    "Grand Overlook",
+    "A steep cliff appears before you, falling the darkness. Ahead to the north, a light flickers in distance, but there is no way across the chasm.", True)
 
-narrow =   Room(
-"Narrow Passage",
-"The narrow passage bends here from west north. The smell of gold permeates the air.", False)
+narrow = Room(
+    "Narrow Passage",
+    "The narrow passage bends here from west north. The smell of gold permeates the air.", False)
 
 treasure = Room(
-"Treasure Chamber",
-"You've found the long-lost treasure! Sadly, it has already been completely emptied by earlier adventurers. The only exit is to the south.", True)
+    "Treasure Chamber",
+    "You've found the long-lost treasure! Sadly, it has already been completely emptied by earlier adventurers. The only exit is to the south.", True)
 
-#more Rooms
-studio =   Room(
-"Studio",
-"The studio is very spacious and have interesting books.", True)
+# more Rooms
+studio = Room(
+    "Studio",
+    "The studio is very spacious and have interesting books.", True)
 
 
 # monster names: gorgoroth
@@ -63,27 +63,30 @@ studio.e_to = None
 # Rooms items
 
 
-tomato = Item("tomato","A delicious red tomato")
-glass_of_water = Item("glass_of_water","A refreshing glass of water")
-knife = Item("knife","A sharp knife")
-napkin = Item("napkin","Just a normal napkin")
-muffin = Item("muffin","A chocolate muffin")
-toothbrush = Item("toothbrush","A used toothbrush")
-coins = Item("coins","A bunch of coins")
-key = Item("key","A rusty key")
+tomato = Item("tomato", "A delicious red tomato")
+glass_of_water = Item("glass_of_water", "A refreshing glass of water")
+knife = Item("knife", "A sharp knife")
+napkin = Item("napkin", "Just a normal napkin")
+muffin = Item("muffin", "A chocolate muffin")
+toothbrush = Item("toothbrush", "A used toothbrush")
+coins = Item("coins", "A bunch of coins")
+key = Item("key", "A rusty key")
 
-#more items
-hat = Item("hat","This mage hat is said to have protective effects against evil beings.")
-letter = Item("letter","A letter from afar in a forgotten language.")
-sword = Item("sword","A light and well-made steel sword")
-cookie = Item("cookie","A venomous cookie. Do not eat it!")
+# more items
+hat = Item(
+    "hat", "This mage hat is said to have protective effects against evil beings.")
+letter = Item("letter", "A letter from afar in a forgotten language.")
+sword = Item("sword", "A light and well-made steel sword")
+cookie = Item("cookie", "A venomous cookie. Do not eat it!")
+LightSource = Item(
+    "LightSource", "LightSource is needed to see items in rooms without ilumination")
 
-outside.items = []
+outside.items = ['LightSource']
 foyer.items = [glass_of_water.name, knife.name, tomato.name]
 overlook.items = [napkin.name, muffin.name]
 narrow.items = [toothbrush.name]
 treasure.items = [coins.name, key.name]
-studio.items = [letter.name,sword.name,hat.name,cookie.name]
+studio.items = [letter.name, sword.name, hat.name, cookie.name]
 
 
 #
@@ -113,19 +116,13 @@ choice = -1
 while choice != 0:
 
     if player.current_room.is_light == False:
-        for item in player.current_room.items:
+        for item in player.items:
             if item != 'LightSource':
-                # print(player)
                 print(f"It's pitch black!")
     else:
-
-
-
-
-
-        # print(player)
         print(f"player's current room name: {player.current_room.name}")
-        print(f"player's current room description: {player.current_room.description}")
+        print(
+            f"player's current room description: {player.current_room.description}")
         print(f" Items in this room: {player.current_room.items}")
 
     #print(f"the room north of this one is {player.current_room.n_to.name}")
@@ -143,74 +140,66 @@ while choice != 0:
     no_room_msg = 'There is no room in that direction'
 
     choices = choice.split(' ')
-    #print(choices)
-    #print(len(choices))
+    # print(choices)
+    # print(len(choices))
 
-    #print(choice)
+    # print(choice)
     if len(choices) == 1:
 
         # Evaluate
         if choice == 'n' and player.current_room.n_to != None:
 
-                # player.set_current_room(player.current_room.n_to.name)
-                player = Player("Luis", player.current_room.n_to)
-                #player.current_room = player.current_room.n_to
-                continue
+            player = Player("Luis", player.current_room.n_to)
+            continue
         elif choice == 'n' and player.current_room.n_to == None:
             print(no_room_msg)
 
-
         if choice == 's' and player.current_room.s_to != None:
-                player = Player("Luis", player.current_room.s_to)
-                #player.current_room = player.current_room.s_to
-                continue
+            player = Player("Luis", player.current_room.s_to)
+            continue
         elif choice == 's' and player.current_room.s_to == None:
             print(no_room_msg)
 
-
         if choice == 'e' and player.current_room.e_to != None:
-                player = Player("Luis", player.current_room.e_to)
-                #player.current_room = player.current_room.e_to
-                continue
-        elif choice == 'e'and player.current_room.e_to == None:
+            player = Player("Luis", player.current_room.e_to)
+            continue
+        elif choice == 'e' and player.current_room.e_to == None:
             print(no_room_msg)
 
-
-
-
         if choice == 'w' and player.current_room.w_to != None:
-                player = Player("Luis", player.current_room.w_to)
-                #player.current_room = player.current_room.w_to
-                continue
+            player = Player("Luis", player.current_room.w_to)
+            continue
 
         elif choice == 'w' and player.current_room.w_to == None:
             print(no_room_msg)
 
         if choice == 'i':
-                print(f"Inventory: {player.items}")
-                continue
+            print(f"Inventory: {player.items}")
+            continue
 
         elif choice == 'w' and player.current_room.w_to == None:
             print(no_room_msg)
-
 
         if choice == '0':
             break
     if len(choices) == 2:
         first_word = choices[0]
         second_word = choices[1]
-        #print("two word command input by player:")
-        #print(f"first word: {first_word}")
-        #print(f"second word: {second_word}")
 
         if first_word == 'get' or first_word == 'take':
             for item in player.current_room.items:
-                if item == second_word:
-                    player.add_item(item)
-                    print(f"You have picked up {player.current_room.items[-1]}")
-                    player.current_room.remove_item(item)
+                # prints "Good luck finding that in the dark!" if
+                # the user tries to pick up an `Item` in the dark.
+                if player.current_room.is_light:
+                    if item == second_word:
+                        player.add_item(item)
+                        print(
+                            f"You have picked up {player.current_room.items[-1]}")
+                        player.current_room.remove_item(item)
+                    else:
+                        print(f"there is no {second_word} in this room")
                 else:
-                    print(f"there is no {second_word} in this room")
+                    print("Good luck finding that in the dark!")
 
         elif first_word == 'drop':
             for item in player.items:
@@ -221,13 +210,6 @@ while choice != 0:
                     player.remove_item(item)
                 else:
                     print(f"there is no {second_word} in this room")
-
-
-
-
-
-
-
 
     # Print
 
