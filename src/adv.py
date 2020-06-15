@@ -118,10 +118,8 @@ while choice != 0:
     if player.current_room.is_light == False:
         for item in player.items:
             if item != 'LightSource':
-                # print(player)
                 print(f"It's pitch black!")
     else:
-        # print(player)
         print(f"player's current room name: {player.current_room.name}")
         print(
             f"player's current room description: {player.current_room.description}")
@@ -151,30 +149,25 @@ while choice != 0:
         # Evaluate
         if choice == 'n' and player.current_room.n_to != None:
 
-            # player.set_current_room(player.current_room.n_to.name)
             player = Player("Luis", player.current_room.n_to)
-            #player.current_room = player.current_room.n_to
             continue
         elif choice == 'n' and player.current_room.n_to == None:
             print(no_room_msg)
 
         if choice == 's' and player.current_room.s_to != None:
             player = Player("Luis", player.current_room.s_to)
-            #player.current_room = player.current_room.s_to
             continue
         elif choice == 's' and player.current_room.s_to == None:
             print(no_room_msg)
 
         if choice == 'e' and player.current_room.e_to != None:
             player = Player("Luis", player.current_room.e_to)
-            #player.current_room = player.current_room.e_to
             continue
         elif choice == 'e' and player.current_room.e_to == None:
             print(no_room_msg)
 
         if choice == 'w' and player.current_room.w_to != None:
             player = Player("Luis", player.current_room.w_to)
-            #player.current_room = player.current_room.w_to
             continue
 
         elif choice == 'w' and player.current_room.w_to == None:
@@ -192,9 +185,6 @@ while choice != 0:
     if len(choices) == 2:
         first_word = choices[0]
         second_word = choices[1]
-        #print("two word command input by player:")
-        #print(f"first word: {first_word}")
-        #print(f"second word: {second_word}")
 
         if first_word == 'get' or first_word == 'take':
             for item in player.current_room.items:
