@@ -13,7 +13,7 @@ Up to this point, you've gotten your feet wet by working on a bunch of small Pyt
 
 * Practice writing code that conforms to a specification
 
-
+# delete this line
 ## MVP
 
 ### Day 1 MVP
